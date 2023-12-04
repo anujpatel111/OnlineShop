@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class ShoppingCartPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create two objects of the ItemToPurchase class
+        ItemToPurchase item1 = new ItemToPurchase();
+        ItemToPurchase item2 = new ItemToPurchase();
+
+        // Prompt the user for the first item
+        System.out.println("Item 1");
+        System.out.println("Enter the item name:");
+        item1.setName(scanner.nextLine());
+        System.out.println("Enter the item price:");
+        item1.setPrice(scanner.nextInt());
+        System.out.println("Enter the item quantity:");
+        item1.setQuantity(scanner.nextInt());
+
+        // Clear the buffer
+        scanner.nextLine();
+
+        // Prompt the user for the second item
+        System.out.println("\nItem 2");
+        System.out.println("Enter the item name:");
+        item2.setName(scanner.nextLine());
+        System.out.println("Enter the item price:");
+        item2.setPrice(scanner.nextInt());
+        System.out.println("Enter the item quantity:");
+        item2.setQuantity(scanner.nextInt());
+
+        // Output the total cost
+        System.out.println("\nTOTAL COST");
+        printItemCost(item1);
+        printItemCost(item2);
+
+        int totalCost = (item1.getPrice() * item1.getQuantity()) + (item2.getPrice() * item2.getQuantity());
+        System.out.println("\nTotal: $" + totalCost);
+
+        // Close the scanner
+        scanner.close();
+    }
+
+    // Helper method to print item cost
+    private static void printItemCost(ItemToPurchase item) {
+        System.out.println(item.getName() + " " + item.getQuantity() + " @ $" + item.getPrice() + " = $" +
+                (item.getPrice() * item.getQuantity()));
+    }
+}
